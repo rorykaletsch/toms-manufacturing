@@ -1,0 +1,119 @@
+/* Apply a global reset for padding, margin, and box-sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Include padding and border in the width and height */
+}
+
+/* Ensure html and body cover the full height and no overflow occurs */
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden; /* Hide horizontal overflow */
+}
+
+/* General body styling to remove default margins and paddings */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center all content horizontally */
+}
+
+/* Nav Block */
+.nav-block {
+  display: flex;
+  justify-content: center; /* Center the nav block content */
+  align-items: center; /* Align items vertically */
+  width: 100%; /* Full width of the viewport */
+  padding: 10px 50px; /* Adjusted padding */
+  margin-top: 10px;
+  position: relative; /* Allows absolute positioning of nav-buttons */
+}
+
+/* Title Styling */
+.nav-block .title {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-block h1 {
+  font-size: 48px;
+  text-align: center; /* Center the text */
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.nav-block h1:hover {
+  font-size: 48px;
+  text-align: center; /* Center the text */
+  color: black;
+}
+
+/* Nav Buttons */
+.nav-buttons {
+  display: flex;
+  justify-content: flex-end; /* Align nav buttons to the right */
+  position: absolute; /* Position the nav-buttons absolutely */
+  right: 50px; /* Adjust distance from the right edge */
+}
+
+.nav-list {
+  display: flex;
+  list-style-type: none;
+  align-items: center; /* Align items vertically */
+}
+
+.nav-icon {
+  display: flex;
+  flex-direction: column; /* Stack icon and text vertically */
+  align-items: center; /* Center items horizontally */
+  margin-left: 40px; /* Space between icons */
+  font-size: 24px;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.nav-icon:hover {
+  color: rgb(184, 0, 0);
+}
+
+.nav-icon h3 {
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+.lobster-regular {
+  font-family: 'Lobster', sans-serif;
+  color: rgb(184, 0, 0);
+}
+
+.roboto-medium {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+}
+
+.heading {
+  text-decoration: none;
+}
+
+/* Search Block */
+.heading-block {
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+  margin-top: 40px;
+  text-decoration: underline;
+  justify-content: center;
+}
+
+/* Intro Text */
+.intro-text {
+  width: 50%;
+  margin-top: 10px;
+  font-size: 18px;
+  text-align: center; /* Center the intro text */
+}
+
+.roboto-regular {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
