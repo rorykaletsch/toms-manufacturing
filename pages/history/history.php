@@ -12,7 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="/dealer-portal/assets/css/history.css">
     <script src="https://kit.fontawesome.com/4feafd16e4.js" crossorigin="anonymous"></script>
     <title>Tom's Manufacturing</title>
 </head>
@@ -20,7 +20,7 @@
 <body>
     <div class="nav-block" id="header">
         <div class="title">
-            <a class="heading" href="./index.html">
+            <a class="heading" href="/dealer-portal/index.php">
                 <h1 class="lobster-regular">Tom's Manufacturing</h1>
             </a>
         </div>
@@ -46,29 +46,18 @@
     </div>
 
 
-<div>
-    <div class="search-block">
-        <i class="fa-solid fa-magnifying-glass search-icon"></i><input class="search-input" type="text" placeholder="Search..." name="" id="">
+    <div>
+        <div class="heading-block">
+            <h3 class="roboto-medium">History</h3>
+        </div>
     </div>
-</div>
-
-<div class="intro-text">
-    <p class="roboto-regular">
-        Lorem ipsum dolor, 
-        sit amet consectetur adipisicing elit. 
-        Cupiditate numquam nesciunt consequatur 
-        reiciendis sunt eius nisi natus repellendus 
-        vero reprehenderit! Dolorem atque sapiente 
-        similique earum illo molestias unde, impedit mollitia.
-        Lorem ipsum dolor, 
-        sit amet consectetur adipisicing elit. 
-        Cupiditate numquam nesciunt consequatur 
-        reiciendis sunt eius nisi natus repellendus 
-        vero reprehenderit! Dolorem atque sapiente 
-        similique earum illo molestias unde, impedit mollitia.
-    </p>
-</div>
-<script src="index.js"></script>
+    
+    <div class="intro-text">
+        <p class="roboto-regular">
+            Use this page to track your current orders, you can view progress, delays and comments from us here!
+        </p>
+    </div>
+<script src="/dealer-portal/assets/js/index.js"></script>
 </body>
 
 </html>

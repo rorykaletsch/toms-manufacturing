@@ -1,19 +1,19 @@
 document.getElementById('orders').addEventListener('click', function(){
-    window.location.href = '/src/orders/orders.html'
+    window.location.href = '/dealer-portal/pages/orders/orders.php'
 });
 
 document.getElementById('history').addEventListener('click', function(){
-    window.location.href = '/src/history/history.html'
+    window.location.href = '/dealer-portal/pages/history/history.php'
 });
 
 document.getElementById('cart').addEventListener('click', function(){
-    window.location.href = '/src/cart/cart.html'
+    window.location.href = '/dealer-portal/pages/cart/cart.php'
 });
 
 document.getElementById('profile').addEventListener('click', function(){
-    window.location.href = '/src/profile/profile.html'
+    window.location.href = '/dealer-portal/pages/profile/profile.php'
 });
 
 document.getElementById('home').addEventListener('click', function(){
-    window.location.href = '/src/index/index.html'
+    window.location.href = '/dealer-portal/index.php'
 });
