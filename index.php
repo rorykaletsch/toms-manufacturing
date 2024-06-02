@@ -13,23 +13,7 @@
     <title>Tom's Manufacturing</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 10px;
-            margin-top: 20px;
-        }
-        .product-item {
-            text-align: center;
-            border: 1px solid #ddd;
-            padding: 10px;
-        }
-        .product-item img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 0 auto 10px;
-        }
+        
     </style>
 </head>
 
@@ -69,18 +53,7 @@
 
     <div class="intro-text">
         <p class="roboto-regular">
-            Lorem ipsum dolor, 
-            sit amet consectetur adipisicing elit. 
-            Cupiditate numquam nesciunt consequatur 
-            reiciendis sunt eius nisi natus repellendus 
-            vero reprehenderit! Dolorem atque sapiente 
-            similique earum illo molestias unde, impedit mollitia.
-            Lorem ipsum dolor, 
-            sit amet consectetur adipisicing elit. 
-            Cupiditate numquam nesciunt consequatur 
-            reiciendis sunt eius nisi natus repellendus 
-            vero reprehenderit! Dolorem atque sapiente 
-            similique earum illo molestias unde, impedit mollitia.
+        At Tom's Manufacturing, we pride ourselves on being a leading provider of heavy machinery equipment and spares. With a commitment to excellence and a passion for innovation, we deliver top-quality products designed to meet the rigorous demands of the industry. Our extensive range of machinery and spare parts ensures that you have everything you need to keep your operations running smoothly.
         </p>
     </div>
 
@@ -90,7 +63,7 @@
     $conn = getDBConnection();
 
     // Fetch product details
-    $sql = "SELECT name, image_path, description FROM products LIMIT 6";
+    $sql = "SELECT name, image_path, description FROM products LIMIT 10";
     $result = $conn->query($sql);
 
     $products = [];
@@ -110,13 +83,14 @@
         <?php foreach ($products as $product): ?>
             <div class="product-item">
                 <img src="<?php echo $product['image_path']; ?>" alt="<?php echo $product['name']; ?>">
-                <h5><?php echo $product['name']; ?></h5>
-                <p><?php echo $product['description']; ?></p>
+                <h5 class="roboto-bold"><?php echo $product['name']; ?></h5>
+                <p class="roboto-regular"><?php echo $product['description']; ?></p>
             </div>
         <?php endforeach; ?>
     </div>
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="/dealer-portal/assets/js/index.js"></script>
 </body>
 
 </html>

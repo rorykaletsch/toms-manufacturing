@@ -1,3 +1,52 @@
+<?php
+// Start a session
+session_start();
+
+// Include the config file
+require_once 'C:/xampp/htdocs/dealer-portal/config.php';
+
+// Handle form submission
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $input_username = $_POST['username'];
+    $input_password = $_POST['password'];
+
+    // Get the database connection
+    $conn = getDBConnection();
+
+    // Prepare and bind
+    $stmt = $conn->prepare("SELECT user_id, username, password_hash FROM users WHERE username = ?");
+    $stmt->bind_param("s", $input_username);
+    $stmt->execute();
+    $stmt->store_result();
+
+    // Check if the user exists
+    if ($stmt->num_rows > 0) {
+        $stmt->bind_result($user_id, $username, $password_hash);
+        $stmt->fetch();
+
+        // Verify the password
+        if (password_verify($input_password, $password_hash)) {
+            // Password is correct, start a session
+            $_SESSION['user_id'] = $user_id;
+            $_SESSION['username'] = $username;
+
+            // Redirect to a secure page
+            header("C:/xampp/htdocs/dealer-portal/index.php");
+            exit();
+        } else {
+            // Invalid password
+            $error = "Invalid password.";
+        }
+    } else {
+        // Invalid username
+        $error = "Invalid username.";
+    }
+
+    $stmt->close();
+    $conn->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,68 +56,29 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="/dealer-portal/assets/css/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/dealer-portal/assets/css/login.css">
     <script src="https://kit.fontawesome.com/4feafd16e4.js" crossorigin="anonymous"></script>
-    <title>Tom's Manufacturing</title>
+    <title>Login - Tom's Manufacturing</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
-    <div class="nav-block" id="header">
-        <div class="title">
-            <a class="heading" href="/dealer-portal/index.php">
-                <h1 class="lobster-regular">Tom's Manufacturing</h1>
-            </a>
-        </div>
-        <div class="nav-buttons">
-            <ul class='nav-list'>
-                <li class="nav-icon"><i id="home" class="fa-solid fa-house"></i>
-                    <h3 class="roboto-medium">Home</a></h3>
-                </li>
-                <li class="nav-icon"><i id="orders" class="fa-solid fa-truck"></i>
-                    <h3 class="roboto-medium">Orders</a></h3>
-                </li>
-                <li class="nav-icon"><i id="history" class="fa-solid fa-file-invoice"></i>
-                    <h3 class="roboto-medium">History</h3>
-                </li>
-                <li class="nav-icon"><i id="profile" class="fa-solid fa-user"></i>
-                    <h3 class="roboto-medium">Profile</h3>
-                </li>
-                <li class="nav-icon"><i id="cart" class="fa-solid fa-cart-shopping"></i>
-                    <h3 class="roboto-medium">Cart</h3>
-                </li>
-            </ul>
-        </div>
+    <div class="login-container">
+        <h2 class="login-title lobster-regular">Tom's Manufacturing</h2>
+        <form action="/dealer-portal/login.php" method="post">
+            <div class="form-group">
+                <input type="text" class="form-control roboto-medium" id="username" name="username" placeholder="Username" required>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control roboto-medium" id="password" name="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="roboto-bold login-button">Login</button>
+        </form>
+        <?php if (isset($error)) { echo '<div class="alert alert-danger">' . $error . '</div>'; } ?>
     </div>
 
-
-<div>
-    <div class="search-block">
-        <i class="fa-solid fa-magnifying-glass search-icon"></i><input class="search-input" type="text" placeholder="Search..." name="" id="">
-    </div>
-</div>
-
-<div class="intro-text">
-    <p class="roboto-regular">
-        Lorem ipsum dolor, 
-        sit amet consectetur adipisicing elit. 
-        Cupiditate numquam nesciunt consequatur 
-        reiciendis sunt eius nisi natus repellendus 
-        vero reprehenderit! Dolorem atque sapiente 
-        similique earum illo molestias unde, impedit mollitia.
-        Lorem ipsum dolor, 
-        sit amet consectetur adipisicing elit. 
-        Cupiditate numquam nesciunt consequatur 
-        reiciendis sunt eius nisi natus repellendus 
-        vero reprehenderit! Dolorem atque sapiente 
-        similique earum illo molestias unde, impedit mollitia.
-    </p>
-</div>
-<script src="/dealer-portal/assets/js/index.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

@@ -90,6 +90,11 @@ body {
   font-weight: 500;
 }
 
+.roboto-bold {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+
 .heading {
   text-decoration: none;
 }
@@ -136,4 +141,31 @@ input:focus {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-style: normal;
+}
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin-top: 20px;
+}
+.product-item {
+  text-align: center;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+.product-item img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 10px;
+}
+
+.product-item h5 {
+  font-size: 14px;
+  margin-bottom: 5px;
+  text-decoration: underline;
+}
+
+.product-item p {
+  font-size: 12px;
 }

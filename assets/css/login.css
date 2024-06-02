@@ -1,140 +1,75 @@
-/* Apply a global reset for padding, margin, and box-sizing */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box; /* Include padding and border in the width and height */
-  }
-  
-  /* Ensure html and body cover the full height and no overflow occurs */
-  html, body {
-    height: 100%;
-    width: 100%;
-    overflow-x: hidden; /* Hide horizontal overflow */
-  }
-  
-  /* General body styling to remove default margins and paddings */
-  body {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center all content horizontally */
-  }
-  
-  /* Nav Block */
-  .nav-block {
-    display: flex;
-    justify-content: center; /* Center the nav block content */
-    align-items: center; /* Align items vertically */
-    width: 100%; /* Full width of the viewport */
-    padding: 10px 50px; /* Adjusted padding */
-    margin-top: 10px;
-    position: relative; /* Allows absolute positioning of nav-buttons */
-  }
-  
-  /* Title Styling */
-  .nav-block .title {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .nav-block h1 {
-    font-size: 48px;
-    text-align: center; /* Center the text */
-    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-  }
-  
-  .nav-block h1:hover {
-    font-size: 48px;
-    text-align: center; /* Center the text */
-    color: black;
-  }
-  
-  /* Nav Buttons */
-  .nav-buttons {
-    display: flex;
-    justify-content: flex-end; /* Align nav buttons to the right */
-    position: absolute; /* Position the nav-buttons absolutely */
-    right: 50px; /* Adjust distance from the right edge */
-  }
-  
-  .nav-list {
-    display: flex;
-    list-style-type: none;
-    align-items: center; /* Align items vertically */
-  }
-  
-  .nav-icon {
-    display: flex;
-    flex-direction: column; /* Stack icon and text vertically */
-    align-items: center; /* Center items horizontally */
-    margin-left: 40px; /* Space between icons */
-    font-size: 24px;
-    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-  }
-  
-  .nav-icon:hover {
-    color: rgb(184, 0, 0);
-  }
-  
-  .nav-icon h3 {
-    font-size: 12px;
-    margin-top: 6px;
-  }
-  
-  .lobster-regular {
-    font-family: 'Lobster', sans-serif;
-    color: rgb(184, 0, 0);
-  }
-  
-  .roboto-medium {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-  }
-  
-  .heading {
-    text-decoration: none;
-  }
-  
-  /* Search Block */
-  .search-block {
-    display: flex;
-    align-items: center;
-    height: 40px;
-    width: 300px;
-    border: solid;
-    border-radius: 30px;
-    margin-top: 40px;
-    justify-content: center; /* Center search icon and input */
-  }
-  
-  .search-icon {
-    margin-left: 20px;
-    font-size: 20px;
-  }
-  
-  .search-input {
-    border: none;
-    outline: none;
-    height: 100%;
-    width: auto;
-    font-size: 16px;
-    margin-left: 10px;
-  }
-  
-  input:focus {
-    outline: none;
-  }
-  
-  /* Intro Text */
-  .intro-text {
-    width: 50%;
-    margin-top: 50px;
-    font-size: 18px;
-    text-align: center; /* Center the intro text */
-  }
-  
-  .roboto-regular {
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-  }
-  
+/* login.css */
+body {
+  font-family: 'Roboto', sans-serif;
+  background: url('/dealer-portal/assets/images/Background.png') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.login-container {
+  max-width: 500px;
+  width: 100%;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  text-align: center; 
+}
+
+.login-title {
+  font-family: 'Lobster', cursive;
+  margin-bottom: 30px;
+  font-size: 50px;
+}
+
+.form-control {
+  margin-bottom: 20px;
+}
+
+.login-button {
+  font-size: 20px;
+  width: 40%;
+  padding: 5px;
+  border-radius: 20px;
+  border-style: none;
+  background-color: black;
+  color: #fff;
+  margin-top: 20px;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.login-button:hover {
+  background-color: rgb(184, 0, 0);
+}
+
+.lobster-regular {
+  font-family: 'Lobster', sans-serif;
+  color: rgb(184, 0, 0);
+}
+
+.roboto-medium {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+}
+
+.roboto-bold {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  height: 30px;
+  margin-top: 5px;
+  padding: 5px;
+  border-radius: 30px;
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 20px;
+  border-width: 2px;
+  border-color: grey;
+}
