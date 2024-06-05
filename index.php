@@ -1,3 +1,34 @@
+<?php
+session_start();
+
+// Check if the user is logged in
+if (!isset($_SESSION['user_id'])) {
+    // If not, redirect to the login page
+    header("Location: /dealer-portal/pages/login/login.php");
+    exit;
+}
+
+include 'C:/xampp/htdocs/dealer-portal/config.php';
+
+$conn = getDBConnection();
+
+// Fetch product details
+$sql = "SELECT name, image_path, description FROM products LIMIT 10";
+$result = $conn->query($sql);
+
+$products = [];
+
+if ($result->num_rows > 0) {
+    // Store product details in an array
+    while ($row = $result->fetch_assoc()) {
+        $products[] = $row;
+    }
+} else {
+    echo "0 results";
+}
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,10 +42,6 @@
     <link rel="stylesheet" href="/dealer-portal/assets/css/index.css">
     <script src="https://kit.fontawesome.com/4feafd16e4.js" crossorigin="anonymous"></script>
     <title>Tom's Manufacturing</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        
-    </style>
 </head>
 
 <body>
@@ -47,37 +74,16 @@
 
     <div>
         <div class="search-block">
-            <i class="fa-solid fa-magnifying-glass search-icon"></i><input class="search-input" type="text" placeholder="Search..." name="" id="">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input class="search-input" type="text" placeholder="Search..." name="" id="">
         </div>
     </div>
 
     <div class="intro-text">
         <p class="roboto-regular">
-        At Tom's Manufacturing, we pride ourselves on being a leading provider of heavy machinery equipment and spares. With a commitment to excellence and a passion for innovation, we deliver top-quality products designed to meet the rigorous demands of the industry. Our extensive range of machinery and spare parts ensures that you have everything you need to keep your operations running smoothly.
+            At Tom's Manufacturing, we pride ourselves on being a leading provider of heavy machinery equipment and spares. With a commitment to excellence and a passion for innovation, we deliver top-quality products designed to meet the rigorous demands of the industry. Our extensive range of machinery and spare parts ensures that you have everything you need to keep your operations running smoothly.
         </p>
     </div>
-
-    <?php
-    include 'config.php';
-
-    $conn = getDBConnection();
-
-    // Fetch product details
-    $sql = "SELECT name, image_path, description FROM products LIMIT 10";
-    $result = $conn->query($sql);
-
-    $products = [];
-
-    if ($result->num_rows > 0) {
-        // Store product details in an array
-        while($row = $result->fetch_assoc()) {
-            $products[] = $row;
-        }
-    } else {
-        echo "0 results";
-    }
-    $conn->close();
-    ?>
 
     <div class="product-grid">
         <?php foreach ($products as $product): ?>
@@ -88,8 +94,6 @@
             </div>
         <?php endforeach; ?>
     </div>
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/js/bootstrap.bundle.min.js"></script>
     <script src="/dealer-portal/assets/js/index.js"></script>
 </body>
 

@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+include 'C:/xampp/htdocs/dealer-portal/config.php'; 
+
+$conn = getDBConnection();
+
 // Check if the user is logged in
 if (!isset($_SESSION['user_id'])) {
     // If not, redirect to the login page
@@ -8,7 +12,25 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
+$user_id = $_SESSION['user_id'];
+
+// Query database to check if the user is admin
+$query = "SELECT is_admin FROM users WHERE user_id = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$row = $result->fetch_assoc();
+
+if ($row["is_admin"] != 1) {
+    header("Location: /dealer-portal/index.php");
+    exit;
+}
+
+$stmt->close();
+$conn->close();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,16 +45,16 @@ if (!isset($_SESSION['user_id'])) {
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="/dealer-portal/assets/css/orders.css">
+    <link rel="stylesheet" href="/dealer-portal/assets/css/cart.css">
     <script src="https://kit.fontawesome.com/4feafd16e4.js" crossorigin="anonymous"></script>
-    <title>Tom's Manufacturing</title>
+    <title>Tom's Manufacturing - Admin</title>
 </head>
 
 <body>
     <div class="nav-block" id="header">
         <div class="title">
-            <a class="heading" href="/dealer-portal/index.php">
-                <h1 class="lobster-regular">Tom's Manufacturing</h1>
+            <a class="heading" href="/dealer-portal/pages/admin/admin.php">
+                <h1 class="lobster-regular">Tom's Manufacturing - Admin</h1>
             </a>
         </div>
         <div class="nav-buttons">
@@ -59,16 +81,15 @@ if (!isset($_SESSION['user_id'])) {
 
     <div>
         <div class="heading-block">
-            <h3 class="roboto-medium">Profile</h3>
+            <h3 class="roboto-medium">Admin</h3>
         </div>
     </div>
     
     <div class="intro-text">
         <p class="roboto-regular">
-            Edit your details and user settings here.
+            Welcome to the admin console
         </p>
     </div>
-<script src="/dealer-portal/assets/js/index.js"></script>
 </body>
 
 </html>
