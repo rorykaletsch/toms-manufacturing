@@ -28,10 +28,7 @@ if ($row["is_admin"] != 1) {
 }
 
 $stmt->close();
-
-// Query for products
-$productQuery = "SELECT * FROM products";
-$productResult = $conn->query($productQuery);
+$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -60,55 +57,14 @@ $productResult = $conn->query($productQuery);
         </div>
         <div class="nav-buttons">
             <ul class='nav-list'>
-                <li class="nav-icon"><i id="admin-portal"class="fa-solid fa-toolbox"></i>
+                <li class="nav-icon"><i id="home"class="fa-solid fa-toolbox"></i>
                     <h3 class="roboto-medium">Admin Portal</h3>
                 </li>
-                <li class="nav-icon"><i id="website" class="fa-solid fa-house"></i>
+                <li class="nav-icon"><i id="home" class="fa-solid fa-house"></i>
                     <h3 class="roboto-medium">Website</h3>
                 </li>
             </ul>
         </div>
-    </div>
-
-    <div class="heading-block">
-    <h3 class="roboto-medium">Admin Portal</h3>
-    <div class="heading-block-buttons">
-        <button class="add-product-button" id="add-product">Add Product</button>
-        <button class="update-product-button" id="update-product">Update Product</button>
-        <button class="delete-product-button">Delete Product</button>
-    </div>
-</div>
-
-    <div class="product-list">
-        <?php
-        if ($productResult->num_rows > 0) {
-            while ($product = $productResult->fetch_assoc()) {
-                echo '
-                <a href="/dealer-portal/pages/admin/product.php?id=' . $product["product_id"] . '" class="product-card-link">
-                    <div class="product-card">
-                        <img src="' . $product["image_path"] . '" alt="' . $product["name"] . '" class="product-image">
-                        <div class="product-info">
-                            <h4 class="roboto-bold product-name">' . $product["name"] . '</h4>
-                            <br>
-                            <p class="roboto">' . $product["description"] . '</p>
-                            
-                        </div>
-                        <div class="product-meta">
-                            <p class="roboto-medium">SKU: ' . $product["product_id"] . '</p>
-                            <p class="roboto-medium">Quantity: ' . $product["quantity"] . '</p>
-                            <p class="roboto-medium">Category: ' . $product["category"] . '</p>
-                        </div>
-                        <div class="product-price roboto-bold">
-                            <h4>R ' . $product["price"] . '</h4>
-                        </div>
-                    </div>
-                </a>';
-            }
-        } else {
-            echo '<p>No products found.</p>';
-        }
-        $conn->close();
-        ?>
     </div>
 </body>
 <script src="/dealer-portal/assets/js/admin.js"></script>

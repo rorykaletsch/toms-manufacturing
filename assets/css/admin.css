@@ -1,0 +1,195 @@
+/* Add this new rule to make the entire product card clickable */
+.product-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  overflow-x: hidden;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Nav Block */
+.nav-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 10px 50px;
+  margin-top: 10px;
+}
+
+/* Title Styling */
+.nav-block .title {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-block h1 {
+  font-size: 48px;
+  text-align: center; /* Center the text */
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.nav-block h1:hover {
+  font-size: 48px;
+  text-align: center; /* Center the text */
+  color: black;
+}
+
+/* Nav Buttons */
+.nav-buttons {
+  display: flex;
+  justify-content: flex-end; /* Align nav buttons to the right */
+  position: absolute; /* Position the nav-buttons absolutely */
+  right: 50px; /* Adjust distance from the right edge */
+}
+
+.nav-list {
+  display: flex;
+  list-style-type: none;
+  align-items: center; /* Align items vertically */
+}
+
+.nav-icon {
+  display: flex;
+  flex-direction: column; /* Stack icon and text vertically */
+  align-items: center; /* Center items horizontally */
+  margin-left: 40px; /* Space between icons */
+  font-size: 24px;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.nav-icon:hover {
+  color: rgb(184, 0, 0);
+}
+
+.nav-icon h3 {
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+.lobster-regular {
+  font-family: 'Lobster', sans-serif;
+  color: rgb(184, 0, 0);
+}
+
+.heading {
+  text-decoration: none;
+}
+
+/* Heading Block */
+.heading-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 92%;
+  padding: 0 50px;
+  margin-top: 20px;
+  font-size: 24px;
+  text-decoration: none;
+}
+
+.heading-block-buttons {
+  display: flex;
+  gap: 10px; /* Adjust the gap as needed */
+}
+
+.add-product-button,
+.update-product-button,
+.delete-product-button {
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 20px;
+  background-color: #fff;
+  color: black;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.add-product-button:hover,
+.update-product-button:hover,
+.delete-product-button:hover {
+  color: rgb(184, 0, 0);
+  border-color: rgb(184, 0, 0);
+}
+
+
+/* Product List */
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 400px;
+  height: 500px;
+  background-color: #fff;
+}
+
+.product-name {
+  font-size: 22px;
+}
+
+.product-image {
+  width: 50%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.product-info {
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+}
+
+.product-meta {
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #ccc;
+  width: 100%;
+}
+
+.product-price {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-top: 1px solid #ccc;
+}
+
+.roboto-medium {
+  font-weight: 500;
+}
+
+.roboto-bold {
+  font-weight: bold;
+}
+
+.roboto {
+  font-weight: 300;
+}
