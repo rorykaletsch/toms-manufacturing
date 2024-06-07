@@ -2,10 +2,6 @@ document.getElementById('orders').addEventListener('click', function(){
     window.location.href = '/dealer-portal/pages/orders/orders.php'
 });
 
-document.getElementById('history').addEventListener('click', function(){
-    window.location.href = '/dealer-portal/pages/history/history.php'
-});
-
 document.getElementById('cart').addEventListener('click', function(){
     window.location.href = '/dealer-portal/pages/cart/cart.php'
 });

@@ -44,9 +44,7 @@ if (!isset($_SESSION['user_id'])) {
                 <li class="nav-icon"><i id="orders" class="fa-solid fa-truck"></i>
                     <h3 class="roboto-medium">Orders</a></h3>
                 </li>
-                <li class="nav-icon"><i id="history" class="fa-solid fa-file-invoice"></i>
-                    <h3 class="roboto-medium">History</h3>
-                </li>
+                
                 <li class="nav-icon"><i id="profile" class="fa-solid fa-user"></i>
                     <h3 class="roboto-medium">Profile</h3>
                 </li>

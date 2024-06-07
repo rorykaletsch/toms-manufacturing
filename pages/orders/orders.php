@@ -8,6 +8,47 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
+include 'C:/xampp/htdocs/dealer-portal/config.php';
+
+$conn = getDBConnection();
+
+// Fetch orders for the logged-in user
+$user_id = $_SESSION['user_id'];
+$sql = "SELECT * FROM orders WHERE user_id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param('i', $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$orders = [];
+
+if ($result->num_rows > 0) {
+    // Store orders in an array
+    while ($row = $result->fetch_assoc()) {
+        $orders[] = $row;
+    }
+} else {
+    echo "No orders found.";
+}
+
+// Fetch order items for each order
+foreach ($orders as &$order) {
+    $sql = "SELECT orderitems.*, products.name FROM orderitems JOIN products ON orderitems.product_id = products.product_id WHERE orderitems.order_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('i', $order['order_id']);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $order_items = [];
+    
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $order_items[] = $row;
+        }
+    }
+    $order['items'] = $order_items;
+}
+
+$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -19,14 +60,10 @@ if (!isset($_SESSION['user_id'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/dealer-portal/assets/css/orders.css">
     <script src="https://kit.fontawesome.com/4feafd16e4.js" crossorigin="anonymous"></script>
-    <title>Tom's Manufacturing</title>
+    <title>My Orders</title>
 </head>
 
 <body>
@@ -39,13 +76,10 @@ if (!isset($_SESSION['user_id'])) {
         <div class="nav-buttons">
             <ul class='nav-list'>
                 <li class="nav-icon"><i id="home" class="fa-solid fa-house"></i>
-                    <h3 class="roboto-medium">Home</a></h3>
+                    <h3 class="roboto-medium">Home</h3>
                 </li>
                 <li class="nav-icon"><i id="orders" class="fa-solid fa-truck"></i>
-                    <h3 class="roboto-medium">Orders</a></h3>
-                </li>
-                <li class="nav-icon"><i id="history" class="fa-solid fa-file-invoice"></i>
-                    <h3 class="roboto-medium">History</h3>
+                    <h3 class="roboto-medium">Orders</h3>
                 </li>
                 <li class="nav-icon"><i id="profile" class="fa-solid fa-user"></i>
                     <h3 class="roboto-medium">Profile</h3>
@@ -57,19 +91,45 @@ if (!isset($_SESSION['user_id'])) {
         </div>
     </div>
 
-
-<div>
-    <div class="heading-block">
-        <h3 class="roboto-medium">Orders</h3>
+    <div class="intro-text">
+        <p class="roboto-regular">
+            Here you can find the details of all your past orders. Review your order history, track the status of your current orders, and get information on each order's items and total amount.
+        </p>
     </div>
-</div>
 
-<div class="intro-text">
-    <p class="roboto-regular">
-        Use this page to track your current orders,  view progress, delays and comments.
-    </p>
-</div>
-<script src="/dealer-portal/assets/js/index.js"></script>
+    <div class="orders-list">
+        <?php
+        if (!empty($orders)) {
+            foreach ($orders as $order) {
+                echo '
+                <div class="order-card">
+                    <h4 class="roboto-bold order-id">Order ID: ' . $order["order_id"] . '</h4>
+                    <p class="roboto">Order Date: ' . $order["order_date"] . '</p>
+                    <p class="roboto">Total Amount: R ' . $order["total_amount"] . '</p>
+                    <div class="order-items">';
+                
+                if (!empty($order['items'])) {
+                    foreach ($order['items'] as $item) {
+                        echo '
+                        <div class="order-item">
+                            <p class="roboto">Product: ' . $item["name"] . '</p>
+                            <p class="roboto">Quantity: ' . $item["quantity"] . '</p>
+                        </div>';
+                    }
+                } else {
+                    echo '<p class="roboto">No items found for this order.</p>';
+                }
+                
+                echo '
+                    </div>
+                </div>';
+            }
+        } else {
+            echo '<p>No orders found.</p>';
+        }
+        ?>
+    </div>
+    <script src="/dealer-portal/assets/js/index.js"></script>
 </body>
 
 </html>
