@@ -10,16 +10,17 @@ if (!isset($_SESSION['user_id'])) {
 
 include 'C:/xampp/htdocs/dealer-portal/config.php';
 
+// Call for DB opening
 $conn = getDBConnection();
 
-// Fetch product details
+// Fetch product attributes
 $sql = "SELECT * FROM products";
 $result = $conn->query($sql);
 
 $products = [];
 
 if ($result->num_rows > 0) {
-    // Store product details in an array
+    // Store product attributes in an arr
     while ($row = $result->fetch_assoc()) {
         $products[] = $row;
     }
@@ -31,17 +32,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $product_id = $_POST['product_id'];
     $quantity = $_POST['quantity'];
 
-    // Initialize the cart if it's not already set
+    // Init cart in session variable
     if (!isset($_SESSION['cart'])) {
         $_SESSION['cart'] = [];
     }
 
-    // Check if the product is already in the cart
+    // Check if product is already in cart
     if (isset($_SESSION['cart'][$product_id])) {
-        // If it is, update the quantity
+        // If exists update quantity
         $_SESSION['cart'][$product_id] += $quantity;
     } else {
-        // Otherwise, add the product with the specified quantity
+        // Add product if not
         $_SESSION['cart'][$product_id] = $quantity;
     }
 }

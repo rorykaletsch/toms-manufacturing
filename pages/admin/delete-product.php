@@ -12,7 +12,7 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-// Query database to check if the user is admin
+// Query to check if the user is admin
 $query = "SELECT is_admin FROM users WHERE user_id = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $user_id);

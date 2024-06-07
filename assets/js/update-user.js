@@ -1,3 +1,4 @@
+//Click events
 document.getElementById('admin-portal').addEventListener('click', function(){
     window.location.href = '/dealer-portal/pages/admin/admin.php'
 });
@@ -6,6 +7,7 @@ document.getElementById('website').addEventListener('click', function(){
     window.location.href = '/dealer-portal/index.php'
 });
 
+// User details fetch
 document.getElementById('selected_user_id').addEventListener('change', function() {
     var userId = this.value;
     if (userId) {

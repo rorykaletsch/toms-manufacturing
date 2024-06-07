@@ -27,7 +27,6 @@ if ($row["is_admin"] != 1) {
 
 $stmt->close();
 
-// Handle AJAX request to fetch product details
 if (isset($_GET['product_id'])) {
     $product_id = intval($_GET['product_id']);
 

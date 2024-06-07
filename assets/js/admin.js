@@ -1,3 +1,5 @@
+// Click events for nav and buttons
+
 document.getElementById('add-product').addEventListener('click', function(){
     window.location.href = '/dealer-portal/pages/admin/add-product.php';
 });

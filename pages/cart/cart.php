@@ -41,7 +41,7 @@ foreach ($product_details as $product) {
     $total_price += $product['price'] * $cart_items[$product['product_id']];
 }
 
-// Calculate shipping and VAT
+// Calculate
 $shipping_fee = 1000.00;
 $vat = 0.15 * $total_price;
 $total_with_charges = $total_price + $shipping_fee + $vat;

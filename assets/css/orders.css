@@ -1,4 +1,4 @@
-/* Global Reset */
+
 * {
   margin: 0;
   padding: 0;
@@ -14,7 +14,7 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-/* Nav Block */
+/* Nav */
 .nav-block {
   display: flex;
   justify-content: center;
@@ -25,7 +25,6 @@ body {
   position: relative;
 }
 
-/* Title Styling */
 .nav-block .title {
   display: flex;
   justify-content: center;
@@ -43,7 +42,6 @@ body {
   color: black;
 }
 
-/* Nav Buttons */
 .nav-buttons {
   display: flex;
   justify-content: flex-end;
@@ -94,7 +92,6 @@ body {
   text-decoration: none;
 }
 
-/* Intro Text */
 .intro-text {
   width: 50%;
   margin-top: 50px;
@@ -108,7 +105,6 @@ body {
   font-style: normal;
 }
 
-/* Orders List */
 .orders-list {
   display: flex;
   flex-wrap: wrap;
@@ -149,4 +145,42 @@ body {
 
 .order-item p {
   margin: 0;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .nav-block {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 20px;
+  }
+
+  .nav-buttons {
+    position: static;
+    margin-top: 10px;
+  }
+
+  .nav-list {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .nav-icon {
+    margin: 0 20px;
+  }
+
+  .intro-text {
+    width: 90%;
+    margin-top: 20px;
+  }
+
+  .orders-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .order-card {
+    width: 90%;
+    height: auto;
+  }
 }

@@ -1,3 +1,5 @@
+// Click events to navigate around site
+
 document.getElementById('orders').addEventListener('click', function(){
     window.location.href = '/dealer-portal/pages/orders/orders.php'
 });

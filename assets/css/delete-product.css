@@ -13,7 +13,7 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-/* Nav Block */
+/* Nav  */
 .nav-block {
     display: flex;
     justify-content: center;
@@ -23,7 +23,6 @@ body {
     margin-top: 10px;
 }
 
-/* Title Styling */
 .nav-block .title {
     display: flex;
     justify-content: center;
@@ -39,7 +38,7 @@ body {
     color: black;
 }
 
-/* Nav Buttons */
+/* Nav */
 .nav-buttons {
     display: flex;
     justify-content: flex-end;
@@ -80,7 +79,7 @@ body {
     text-decoration: none;
 }
 
-/* Form Container */
+/* Form */
 .container {
     display: flex;
     flex-direction: column;

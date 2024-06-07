@@ -1,4 +1,3 @@
-/* login.css */
 body {
   font-family: 'Roboto', sans-serif;
   background: url('/dealer-portal/assets/images/Background.png') no-repeat center center fixed;
@@ -69,7 +68,19 @@ body {
   border-radius: 30px;
   text-align: center;
   font-size: 18px;
-  margin-bottom: 20px;
-  border-width: 2px;
-  border-color: grey;
+  border: 2px solid grey;
+}
+
+@media (max-width: 600px) {
+  .login-container {
+    padding: 20px;
+  }
+
+  .login-title {
+    font-size: 40px;
+  }
+
+  .login-button {
+    width: 60%;
+  }
 }

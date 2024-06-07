@@ -1,11 +1,3 @@
-/* Add this new rule to make the entire product card clickable */
-.product-card-link {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
-
-/* Global Reset */
 * {
   margin: 0;
   padding: 0;
@@ -21,7 +13,7 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-/* Nav Block */
+/* Nav */
 .nav-block {
   display: flex;
   justify-content: center;
@@ -32,7 +24,6 @@ body {
   position: relative;
 }
 
-/* Title Styling */
 .nav-block .title {
   display: flex;
   justify-content: center;
@@ -50,7 +41,6 @@ body {
   color: black;
 }
 
-/* Nav Buttons */
 .nav-buttons {
   display: flex;
   justify-content: flex-end;
@@ -101,37 +91,11 @@ body {
   text-decoration: none;
 }
 
-/* Search Block */
-.search-block {
-  display: flex;
-  align-items: center;
-  height: 40px;
-  width: 300px;
-  border: solid;
-  border-radius: 30px;
-  margin-top: 40px;
-  justify-content: center;
-}
-
-.search-icon {
-  margin-left: 20px;
-  font-size: 20px;
-}
-
-.search-input {
-  border: none;
-  outline: none;
-  height: 100%;
-  width: auto;
-  font-size: 16px;
-  margin-left: 10px;
-}
-
 input:focus {
   outline: none;
 }
 
-/* Intro Text */
+/* paragraph-intro */
 .intro-text {
   width: 50%;
   margin-top: 50px;
@@ -145,7 +109,7 @@ input:focus {
   font-style: normal;
 }
 
-/* Product List */
+/* products */
 .product-list {
   display: flex;
   flex-wrap: wrap;
@@ -200,7 +164,7 @@ input:focus {
   border-top: 1px solid #ccc;
 }
 
-/* Add styles for the add-to-cart form and button */
+/* add-to-cart */
 .add-to-cart {
   display: block;
   width: 100%;
@@ -230,4 +194,51 @@ input:focus {
   padding: 5px;
   margin-right: 10px;
   text-align: center;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .nav-block {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 20px;
+  }
+
+  .nav-buttons {
+    position: static;
+    margin-top: 10px;
+  }
+
+  .nav-list {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .nav-icon {
+    margin: 0 20px;
+  }
+
+  .intro-text {
+    width: 90%;
+    margin-top: 20px;
+  }
+
+  .product-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product-card {
+    width: 90%;
+    height: auto;
+  }
+
+  .product-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .product-info, .product-meta, .product-price {
+    padding: 10px;
+  }
 }

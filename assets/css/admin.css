@@ -1,11 +1,10 @@
-/* Add this new rule to make the entire product card clickable */
+/* product-card clicks */
 .product-card-link {
   text-decoration: none;
   color: inherit;
   display: block;
 }
 
-/* Global Reset */
 * {
   margin: 0;
   padding: 0;
@@ -21,7 +20,7 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-/* Nav Block */
+/* Nav */
 .nav-block {
   display: flex;
   justify-content: center;
@@ -31,7 +30,6 @@ body {
   margin-top: 10px;
 }
 
-/* Title Styling */
 .nav-block .title {
   display: flex;
   justify-content: center;
@@ -40,43 +38,33 @@ body {
 .nav-block h1 {
   font-size: 48px;
   text-align: center;
-  /* Center the text */
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
 .nav-block h1:hover {
   font-size: 48px;
   text-align: center;
-  /* Center the text */
   color: black;
 }
 
-/* Nav Buttons */
 .nav-buttons {
   display: flex;
   justify-content: flex-end;
-  /* Align nav buttons to the right */
   position: absolute;
-  /* Position the nav-buttons absolutely */
   right: 50px;
-  /* Adjust distance from the right edge */
 }
 
 .nav-list {
   display: flex;
   list-style-type: none;
   align-items: center;
-  /* Align items vertically */
 }
 
 .nav-icon {
   display: flex;
   flex-direction: column;
-  /* Stack icon and text vertically */
   align-items: center;
-  /* Center items horizontally */
   margin-left: 40px;
-  /* Space between icons */
   font-size: 24px;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
@@ -99,7 +87,6 @@ body {
   text-decoration: none;
 }
 
-/* Heading Block */
 .heading-block {
   display: flex;
   justify-content: space-between;
@@ -114,7 +101,6 @@ body {
 .heading-block-buttons {
   display: flex;
   gap: 10px;
-  /* Adjust the gap as needed */
 }
 
 .heading-block-buttons .add-product-button,
@@ -142,9 +128,6 @@ body {
   border-color: rgb(184, 0, 0);
 }
 
-
-
-/* Product List */
 .product-list {
   display: flex;
   flex-wrap: wrap;

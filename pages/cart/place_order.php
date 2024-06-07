@@ -16,7 +16,7 @@ $total_amount = 0;
 $shipping_fee = 1000;
 $vat_rate = 0.15;
 
-// Calculate the total amount
+// Calculate the total 
 foreach ($cart_items as $product_id => $quantity) {
     $stmt = $conn->prepare("SELECT price FROM products WHERE product_id = ?");
     $stmt->bind_param("i", $product_id);

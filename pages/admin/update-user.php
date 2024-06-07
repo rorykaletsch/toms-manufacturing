@@ -30,7 +30,6 @@ $query = "SELECT user_id, username FROM users";
 $result = $conn->query($query);
 $users = $result->fetch_all(MYSQLI_ASSOC);
 
-// Update user details if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['selected_user_id'])) {
     $selected_user_id = $_POST['selected_user_id'];
     $username = $_POST['username'];
