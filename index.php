@@ -13,7 +13,7 @@ include 'C:/xampp/htdocs/dealer-portal/config.php';
 $conn = getDBConnection();
 
 // Fetch product details
-$sql = "SELECT name, image_path, description FROM products LIMIT 10";
+$sql = "SELECT * FROM products";
 $result = $conn->query($sql);
 
 $products = [];
@@ -26,6 +26,26 @@ if ($result->num_rows > 0) {
 } else {
     echo "0 results";
 }
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $product_id = $_POST['product_id'];
+    $quantity = $_POST['quantity'];
+
+    // Initialize the cart if it's not already set
+    if (!isset($_SESSION['cart'])) {
+        $_SESSION['cart'] = [];
+    }
+
+    // Check if the product is already in the cart
+    if (isset($_SESSION['cart'][$product_id])) {
+        // If it is, update the quantity
+        $_SESSION['cart'][$product_id] += $quantity;
+    } else {
+        // Otherwise, add the product with the specified quantity
+        $_SESSION['cart'][$product_id] = $quantity;
+    }
+}
+
 $conn->close();
 ?>
 
@@ -72,27 +92,43 @@ $conn->close();
         </div>
     </div>
 
-    <div>
-        <div class="search-block">
-            <i class="fa-solid fa-magnifying-glass search-icon"></i>
-            <input class="search-input" type="text" placeholder="Search..." name="" id="">
-        </div>
-    </div>
-
     <div class="intro-text">
         <p class="roboto-regular">
             At Tom's Manufacturing, we pride ourselves on being a leading provider of heavy machinery equipment and spares. With a commitment to excellence and a passion for innovation, we deliver top-quality products designed to meet the rigorous demands of the industry. Our extensive range of machinery and spare parts ensures that you have everything you need to keep your operations running smoothly.
         </p>
     </div>
 
-    <div class="product-grid">
-        <?php foreach ($products as $product): ?>
-            <div class="product-item">
-                <img src="<?php echo $product['image_path']; ?>" alt="<?php echo $product['name']; ?>">
-                <h5 class="roboto-bold"><?php echo $product['name']; ?></h5>
-                <p class="roboto-regular"><?php echo $product['description']; ?></p>
-            </div>
-        <?php endforeach; ?>
+    <div class="product-list">
+        <?php
+        if (!empty($products)) {
+            foreach ($products as $product) {
+                echo '
+                <div class="product-card">
+                    <img src="' . $product["image_path"] . '" alt="' . $product["name"] . '" class="product-image">
+                    <div class="product-info">
+                        <h4 class="roboto-bold product-name">' . $product["name"] . '</h4>
+                        <br>
+                        <p class="roboto">' . $product["description"] . '</p>
+                    </div>
+                    <div class="product-meta">
+                        <p class="roboto-medium">SKU: ' . $product["product_id"] . '</p>
+                        <p class="roboto-medium">Quantity: ' . $product["quantity"] . '</p>
+                        <p class="roboto-medium">Category: ' . $product["category"] . '</p>
+                    </div>
+                    <div class="product-price roboto-bold">
+                        <h4>R ' . $product["price"] . '</h4>
+                    </div>
+                    <form action="index.php" method="POST">
+                        <input type="hidden" name="product_id" value="' . $product["product_id"] . '">
+                        <input type="number" name="quantity" min="1" max="' . $product["quantity"] . '" value="1" required>
+                        <button type="submit" class="add-to-cart">Add to Cart</button>
+                    </form>
+                </div>';
+            }
+        } else {
+            echo '<p>No products found.</p>';
+        }
+        ?>
     </div>
     <script src="/dealer-portal/assets/js/index.js"></script>
 </body>

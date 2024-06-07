@@ -1,0 +1,131 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    overflow-x: hidden;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Nav Block */
+.nav-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px 50px;
+    margin-top: 10px;
+}
+
+/* Title Styling */
+.nav-block .title {
+    display: flex;
+    justify-content: center;
+}
+
+.nav-block h1 {
+    font-size: 48px;
+    text-align: center;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.nav-block h1:hover {
+    color: black;
+}
+
+/* Nav Buttons */
+.nav-buttons {
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    right: 50px;
+}
+
+.nav-list {
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+}
+
+.nav-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 40px;
+    font-size: 24px;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.nav-icon:hover {
+    color: rgb(184, 0, 0);
+}
+
+.nav-icon h3 {
+    font-size: 12px;
+    margin-top: 6px;
+}
+
+.lobster-regular {
+    font-family: 'Lobster', sans-serif;
+    color: rgb(184, 0, 0);
+}
+
+.heading {
+    text-decoration: none;
+}
+
+/* Form Container */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    padding: 20px;
+    width: 100%;
+}
+
+.container h2 {
+    margin-bottom: 20px;
+}
+
+.product-form {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+}
+
+.product-form label {
+    margin-top: 10px;
+}
+
+.product-form input[type="text"],
+.product-form textarea,
+.product-form input[type="number"],
+.product-form input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.product-form input[type="submit"] {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: rgb(184, 0, 0);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.product-form input[type="submit"]:hover {
+    background-color: black;
+}

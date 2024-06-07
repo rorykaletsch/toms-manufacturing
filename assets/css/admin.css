@@ -39,35 +39,44 @@ body {
 
 .nav-block h1 {
   font-size: 48px;
-  text-align: center; /* Center the text */
+  text-align: center;
+  /* Center the text */
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
 .nav-block h1:hover {
   font-size: 48px;
-  text-align: center; /* Center the text */
+  text-align: center;
+  /* Center the text */
   color: black;
 }
 
 /* Nav Buttons */
 .nav-buttons {
   display: flex;
-  justify-content: flex-end; /* Align nav buttons to the right */
-  position: absolute; /* Position the nav-buttons absolutely */
-  right: 50px; /* Adjust distance from the right edge */
+  justify-content: flex-end;
+  /* Align nav buttons to the right */
+  position: absolute;
+  /* Position the nav-buttons absolutely */
+  right: 50px;
+  /* Adjust distance from the right edge */
 }
 
 .nav-list {
   display: flex;
   list-style-type: none;
-  align-items: center; /* Align items vertically */
+  align-items: center;
+  /* Align items vertically */
 }
 
 .nav-icon {
   display: flex;
-  flex-direction: column; /* Stack icon and text vertically */
-  align-items: center; /* Center items horizontally */
-  margin-left: 40px; /* Space between icons */
+  flex-direction: column;
+  /* Stack icon and text vertically */
+  align-items: center;
+  /* Center items horizontally */
+  margin-left: 40px;
+  /* Space between icons */
   font-size: 24px;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
@@ -104,12 +113,16 @@ body {
 
 .heading-block-buttons {
   display: flex;
-  gap: 10px; /* Adjust the gap as needed */
+  gap: 10px;
+  /* Adjust the gap as needed */
 }
 
-.add-product-button,
-.update-product-button,
-.delete-product-button {
+.heading-block-buttons .add-product-button,
+.heading-block-buttons .update-product-button,
+.heading-block-buttons .delete-product-button,
+.heading-block-buttons .add-user-button,
+.heading-block-buttons .update-user-button,
+.heading-block-buttons .delete-user-button {
   padding: 5px 10px;
   font-size: 16px;
   border-radius: 20px;
@@ -119,12 +132,16 @@ body {
   font-weight: bold;
 }
 
-.add-product-button:hover,
-.update-product-button:hover,
-.delete-product-button:hover {
+.heading-block-buttons .add-product-button:hover,
+.heading-block-buttons .update-product-button:hover,
+.heading-block-buttons .delete-product-button:hover,
+.heading-block-buttons .add-user-button:hover,
+.heading-block-buttons .update-user-button:hover,
+.heading-block-buttons .delete-user-button:hover {
   color: rgb(184, 0, 0);
   border-color: rgb(184, 0, 0);
 }
+
 
 
 /* Product List */
